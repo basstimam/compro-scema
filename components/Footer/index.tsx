@@ -8,8 +8,8 @@ const Footer = () => {
       <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-blacksection">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           {/* <!-- Footer Top --> */}
-          <div className="py-20 lg:py-25">
-            <div className="flex flex-wrap gap-8 lg:justify-between lg:gap-0">
+          <div className="py-10 sm:py-15 md:py-20 lg:py-25">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4 lg:gap-0">
               <motion.div
                 variants={{
                   hidden: {
@@ -26,23 +26,27 @@ const Footer = () => {
                 whileInView="visible"
                 transition={{ duration: 1, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="animate_top w-1/2 lg:w-1/4"
+                className="animate_top col-span-2 sm:col-span-1"
               >
                 <a href="/" className="relative">
-                  <Image
-                    width={110}
-                    height={80}
-                    src="/images/logo/logo-light.svg"
-                    alt="Logo"
-                    className="dark:hidden"
-                  />
-                  <Image
-                    width={110}
-                    height={80}
-                    src="/images/logo/logo-dark.svg"
-                    alt="Logo"
-                    className="hidden dark:block"
-                  />
+                  <div className="relative w-[110px] h-[80px]">
+                    <Image
+                      width={110}
+                      height={80}
+                      src="/images/logo/logo-light.svg"
+                      alt="Logo"
+                      className="dark:hidden w-full h-full object-contain"
+                      priority
+                    />
+                    <Image
+                      width={110}
+                      height={80}
+                      src="/images/logo/logo-dark.svg"
+                      alt="Logo"
+                      className="hidden dark:block w-full h-full object-contain"
+                      priority
+                    />
+                  </div>
                 </a>
 
                 <p className="mb-10 mt-5">
@@ -169,7 +173,7 @@ const Footer = () => {
           {/* <!-- Footer Top --> */}
 
           {/* <!-- Footer Bottom --> */}
-          <div className="flex flex-col flex-wrap items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between lg:gap-0">
+          <div className="flex flex-col items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark sm:flex-row lg:justify-between lg:gap-0">
             <motion.div
               variants={{
                 hidden: {
