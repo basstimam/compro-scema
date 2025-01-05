@@ -3,15 +3,41 @@ import SharePost from "@/components/Blog/SharePost";
 import BlogData from "@/components/Blog/blogData";
 import { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Blog Details Page - Solid SaaS Boilerplate",
-  description: "This is Blog details page for Solid Pro",
+type Props = {
+  params: {
+    id: string;
+  };
 };
 
-const SingleBlogPage = async () => {
-  // Mengambil data blog pertama sebagai contoh
-  const blogPost = BlogData[0];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const blogPost = BlogData.find((blog) => blog._id.toString() === params.id);
+
+  if (!blogPost) {
+    return {
+      title: "Blog Not Found - Solid SaaS Boilerplate",
+      description: "The requested blog post could not be found",
+    };
+  }
+
+  return {
+    title: `${blogPost.title} - Solid SaaS Boilerplate`,
+    description: blogPost.metadata,
+  };
+}
+
+const SingleBlogPage = async ({ params }: Props) => {
+  const blogPost = BlogData.find((blog) => blog._id.toString() === params.id);
+
+  if (!blogPost) {
+    notFound();
+  }
+
+  // Get related posts (excluding current post)
+  const relatedPosts = BlogData.filter(
+    (blog) => blog._id.toString() !== params.id
+  ).slice(0, 2);
 
   return (
     <>
@@ -104,7 +130,7 @@ const SingleBlogPage = async () => {
                   </p>
 
                   <div className="flex flex-wrap gap-5 mt-8">
-                    {BlogData.slice(1, 3).map((blog, index) => (
+                    {relatedPosts.map((blog, index) => (
                       <Image
                         key={index}
                         src={blog.mainImage}
@@ -126,4 +152,4 @@ const SingleBlogPage = async () => {
   );
 };
 
-export default SingleBlogPage;
+export default SingleBlogPage; 
