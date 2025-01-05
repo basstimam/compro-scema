@@ -7,9 +7,9 @@ const About = () => {
   return (
     <>
       {/* <!-- ===== About Start ===== --> */}
-      <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
+      <section className="overflow-hidden pb-10 sm:pb-15 md:pb-20 lg:pb-25 xl:pb-30">
         <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
-          <div className="flex items-center gap-8 lg:gap-32.5">
+          <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-32.5">
             <motion.div
               variants={{
                 hidden: {
@@ -26,20 +26,26 @@ const About = () => {
               whileInView="visible"
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="animate_left relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
+              className="animate_left relative mx-auto w-full md:w-1/2 aspect-[588/526.5]"
             >
-              <Image
-                src="/images/about/main-1.jpg"
-                alt="About"
-                className="dark:hidden"
-                fill
-              />
-              <Image
-                src="/images/about/main-1.jpg"
-                alt="About"
-                className="hidden dark:block"
-                fill
-              />
+              <div className="relative w-full h-full min-h-[300px]">
+                <Image
+                  src="/images/about/main-1.jpg"
+                  alt="About"
+                  className="dark:hidden object-cover rounded-lg"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 588px"
+                  priority
+                />
+                <Image
+                  src="/images/about/main-1.jpg"
+                  alt="About"
+                  className="hidden dark:block object-cover rounded-lg"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 588px"
+                  priority
+                />
+              </div>
             </motion.div>
             <motion.div
               variants={{
@@ -132,18 +138,24 @@ const About = () => {
               viewport={{ once: true }}
               className="animate_right relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
-              <Image
-                src="/images/about/main-2.jpg"
-                alt="About"
-                className="dark:hidden"
-                fill
-              />
-              <Image
-                src="/images/about/main-2.jpg"
-                alt="About"
-                className="hidden dark:block"
-                fill
-              />
+              <div className="relative w-full h-full min-h-[300px]">
+                <Image
+                  src="/images/about/main-2.jpg"
+                  alt="About"
+                  className="dark:hidden object-cover rounded-lg"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 588px"
+                  priority
+                />
+                <Image
+                  src="/images/about/main-2.jpg"
+                  alt="About"
+                  className="hidden dark:block object-cover rounded-lg"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 588px"
+                  priority
+                />
+              </div>
             </motion.div>
           </div>
         </div>
